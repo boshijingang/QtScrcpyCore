@@ -172,6 +172,16 @@ void Controller::setDeviceClipboard(bool pause)
     postControlMsg(controlMsg);
 }
 
+void Controller::setDeviceClipboardText(QString &text, bool pause)
+{
+    ControlMsg *controlMsg = new ControlMsg(ControlMsg::CMT_SET_CLIPBOARD);
+    if (!controlMsg) {
+        return;
+    }
+    controlMsg->setSetClipboardMsgData(text, pause);
+    postControlMsg(controlMsg);
+}
+
 void Controller::clipboardPaste()
 {
     QClipboard *board = QApplication::clipboard();

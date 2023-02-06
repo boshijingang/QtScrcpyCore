@@ -487,7 +487,7 @@ void Device::postTextInput(QString &text)
     if (!m_controller) {
         return;
     }
-    m_controller->postTextInput(text);
+    m_controller->setDeviceClipboardText(text);
 
     for (const auto& item : m_deviceObservers) {
         item->postTextInput(text);
